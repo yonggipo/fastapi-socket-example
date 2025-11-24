@@ -27,7 +27,7 @@ venv\Scripts\activate
 ### 3. 의존성 설치
 
 ```bash
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 ### 4. 서버 실행
@@ -39,12 +39,34 @@ python -m uvicorn main:socket_app --host 0.0.0.0 --port 8000 --reload
 또는
 
 ```bash
-python main.py
+python3 main.py
 ```
 
 ### 5. 서버 종료
 
 터미널에서 `Ctrl + C`를 눌러 서버를 종료합니다.
+
+#### 서버가 제대로 종료되지 않은 경우
+
+포트가 이미 사용 중이라는 에러가 발생하면, 다음 명령어로 해당 프로세스를 찾아 종료하세요:
+
+```bash
+# 8000번 포트를 사용하는 프로세스 찾기
+lsof -ti:8000
+
+# 해당 프로세스 강제 종료
+kill -9 $(lsof -ti:8000)
+```
+
+또는 한 번에 실행:
+
+```bash
+# macOS/Linux
+lsof -ti:8000 | xargs kill -9
+
+# Windows (PowerShell)
+Get-NetTCPConnection -LocalPort 8000 | Select-Object -ExpandProperty OwningProcess | ForEach-Object { Stop-Process -Id $_ -Force }
+```
 
 ### 6. 가상환경 비활성화
 
