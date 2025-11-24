@@ -4,7 +4,12 @@
       "Bash(source:*)",
       "Bash(pip install:*)",
       "Bash(tree:*)",
-      "Bash(python:*)"
+      "Bash(python:*)",
+      "Bash(./venv/bin/pip:*)",
+      "Bash(rm:*)",
+      "Bash(python3:*)",
+      "Bash(echo:*)",
+      "Bash(cat:*)"
     ],
     "deny": [],
     "ask": []
